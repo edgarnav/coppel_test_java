@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class selenium_coppel_test {
 
     @Test
-    public static void main(String[] args) throws InterruptedException {
+    public void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.coppel.com/");
