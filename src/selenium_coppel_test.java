@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class selenium_coppel_test {
 
     @Test
-    public void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.coppel.com/");
@@ -34,8 +34,8 @@ public class selenium_coppel_test {
 
         while (products){
             try {
-                wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("WC_OrderItemDetailsf_links_2_1")));
-                driver.findElement(By.id("WC_OrderItemDetailsf_links_2_1")).click();
+                wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.linkText("Eliminar")));
+                driver.findElement(By.linkText("Eliminar")).click();
                 TimeUnit.SECONDS.sleep(2);
             } catch (Exception e) {
                 driver.findElement(By.id("logo")).click();
@@ -45,14 +45,14 @@ public class selenium_coppel_test {
         wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("SimpleSearchForm_SearchTerm")));
         driver.findElement(By.id("SimpleSearchForm_SearchTerm")).sendKeys("409758");
         driver.findElement(By.id("SimpleSearchForm_SearchTerm")).sendKeys(Keys.ENTER);
-        wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("add2CartBtn")));
+        wait_driver.until(ExpectedConditions.elementToBeClickable(By.id("add2CartBtn")));
         driver.findElement(By.id("add2CartBtn")).click();
-        wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("GotoCartButton2")));
+        wait_driver.until(ExpectedConditions.elementToBeClickable(By.id("GotoCartButton2")));
         driver.findElement(By.id("GotoCartButton2")).click();
         wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("shopcartCheckout")));
         driver.findElement(By.id("shopcartCheckout")).click();
 
-        wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("WC_ShopcartAddressFormDisplay_links_metodo_pago")));
+        wait_driver.until(ExpectedConditions.elementToBeClickable(By.id("WC_ShopcartAddressFormDisplay_links_metodo_pago")));
         driver.findElement(By.id("WC_ShopcartAddressFormDisplay_links_metodo_pago")).click();
 
         wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("listPaymentMethod")));
@@ -65,5 +65,7 @@ public class selenium_coppel_test {
         wait_driver.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("total_breakdown")));
 
         TimeUnit.SECONDS.sleep(10);
+        driver.close();
+
     }
 }
